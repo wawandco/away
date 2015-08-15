@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'away_Example', :exclusive => true do
+  pod "away", :path => "../"
+end
+
+target 'away_Tests', :exclusive => true do
+  pod "away", :path => "../"
+
+  pod 'Quick', '~> 0.3.1'
+  pod 'Nimble'
+end
