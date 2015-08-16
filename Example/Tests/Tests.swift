@@ -11,6 +11,7 @@ class TableOfContentsSpec: QuickSpec {
 
             describe("buildLocation"){
                 let location = CLLocation(latitude: 11.008914, longitude: -74.810864)
+                let distanceCases = [ 0.01, 1.0, 3.0, 9.0.km, 99.99.km, 0.1.km, 1.miles ]
 
                 it("contains a method called buildLocation that returns a CLLocation") {
                     expect(Away.buildLocation(3, from: location)).to(beAnInstanceOf(CLLocation))
@@ -21,22 +22,22 @@ class TableOfContentsSpec: QuickSpec {
                 }
 
                 it("returns a CLLocation that is N meters away from base location"){
-                    for distance in [0.01, 1.0, 3.0, 9999.0, 100.0] {
+                    for distance in distanceCases {
                         var resultLocation = Away.buildLocation(distance, from: location)
                         expect(resultLocation.distanceFromLocation(location)) >= distance
                     }
                 }
 
                 it("changes the latitude insignificantly if we dont pass the bearing degrees"){
-                    for distance in [0.01, 1.0, 3.0, 9999.0, 100.0] {
+                    for distance in distanceCases {
                         var resultLocation = Away.buildLocation(distance, from: location)
                         let difference = abs(resultLocation.coordinate.latitude - location.coordinate.latitude)
-                        expect(difference) < 0.0001
+                        expect(difference) < 0.002
                     }
                 }
 
                 it("accepts an optional parameter for the bearing"){
-                    for bearing in 0...360{
+                    for bearing in 0...360 {
                         var resultLocation = Away.buildLocation(100, from: location, bearing: Double(bearing))
                         var distanceDifference = resultLocation.distanceFromLocation(location) - 100
                         expect(distanceDifference) < 0.2

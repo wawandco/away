@@ -27,12 +27,20 @@ public class Away {
     }
 }
 
-extension Double {
+public extension Double {
     var toRadians : Double {
          return self * M_PI / 180.0
     }
 
     var toDegrees : Double {
          return self * 180.0 / M_PI
+    }
+
+    var miles : Double {
+        return self * 1600
+    }
+
+    var km: Double {
+        return self * 1000
     }
 }
