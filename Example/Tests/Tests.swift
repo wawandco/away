@@ -53,13 +53,3 @@ class TableOfContentsSpec: QuickSpec {
         }
     }
 }
-
-extension Int {
-    static func random() -> Int {
-        return Int(arc4random())
-    }
-
-    static func random(range: Range<Int>) -> Int {
-        return Int(arc4random_uniform(UInt32(range.endIndex - range.startIndex))) + range.startIndex
-    }
-}
