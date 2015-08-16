@@ -18,13 +18,15 @@ There are 2 main functions inside Away: `buildLocation` and `buildTrip`
 ### buildLocation
 
 Build location propose is to generate a single location that is some distance away from a `from` base location.
+It also receives a `bearing` parameter that indicates the degree Away uses for the new location.
 
 ```Swift
   Away.buildLocation(3.miles(), from: baseLocation)
   Away.buildLocation(3.kilometers(), from: baseLocation)
+  Away.buildLocation(3.kilometers(), from: baseLocation, bearing: 10)
 ```
 
-It returns a CLLocation.
+This method returns an instance of CLLocation with a possible deviation minor than 0.2 meters.
 
 ### buildTrip
 
