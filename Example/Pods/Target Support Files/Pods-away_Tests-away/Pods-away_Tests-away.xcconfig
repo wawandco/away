@@ -1,0 +1,1 @@
+PODS_AWAY_TESTS_AWAY_OTHER_LDFLAGS = -framework "CoreLocation" -framework "Foundation"

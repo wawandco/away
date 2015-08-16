@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## away
+## Away
 
 Copyright (c) 2015 Antonio Pagano <apagano@wawand.co>
 

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -o pipefail
+xcodebuild test -workspace Example/away.xcworkspace -scheme away-Example -sdk iphonesimulator BUILD_ACTIVE_ARCH=NO | xcpretty -tc

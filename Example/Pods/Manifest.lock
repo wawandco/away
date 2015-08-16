@@ -1,20 +1,20 @@
 PODS:
-  - away (0.1.0)
+  - Away (0.1.0)
   - Nimble (1.0.0)
   - Quick (0.3.1)
 
 DEPENDENCIES:
-  - away (from `../`)
+  - Away (from `../`)
   - Nimble
   - Quick (~> 0.3.1)
 
 EXTERNAL SOURCES:
-  away:
+  Away:
     :path: "../"
 
 SPEC CHECKSUMS:
-  away: 32f2cd0f4951095b2aa76bb5ed6f9ed8db7679e2
+  Away: a3febe4adda96e5a03f3826aa196075eb8c565eb
   Nimble: 8bee528e5fcc403653076545db562d2b5db7bb87
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
 
-COCOAPODS: 0.37.0
+COCOAPODS: 0.37.2

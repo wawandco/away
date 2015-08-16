@@ -7,34 +7,27 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "away"
+  s.name             = "Away"
   s.version          = "0.1.0"
   s.summary          = "A short description of away."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+                        Away helps building fake CLLocations based on a given distance.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/away"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/wawandco/away"
   s.license          = 'MIT'
   s.author           = { "Antonio Pagano" => "apagano@wawand.co" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/away.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/wawandco/away.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/wawandco'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
-    'away' => ['Pod/Assets/*.png']
+    'Away' => ['Pod/Assets/*.png']
   }
-
+  s.frameworks = 'CoreLocation', 'Foundation'
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

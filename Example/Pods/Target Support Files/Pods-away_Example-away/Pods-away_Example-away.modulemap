@@ -1,5 +1,5 @@
-framework module away {
-  umbrella header "Pods-away_Example-away-umbrella.h"
+framework module Away {
+  umbrella header "Pods-away_Example-Away-umbrella.h"
 
   export *
   module * { export * }

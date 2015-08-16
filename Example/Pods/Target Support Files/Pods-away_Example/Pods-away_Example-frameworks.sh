@@ -48,8 +48,8 @@ code_sign() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework 'away.framework'
+  install_framework 'Away.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework 'away.framework'
+  install_framework 'Away.framework'
 fi

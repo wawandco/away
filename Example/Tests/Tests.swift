@@ -2,49 +2,63 @@
 
 import Quick
 import Nimble
-import away
+import CoreLocation
+import Away
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
-        describe("these will fail") {
+        describe("Away class methods") {
 
-            it("can do maths") {
-                expect(1) == 2
-            }
+            describe("buildLocation"){
+                let location = CLLocation(latitude: 11.008914, longitude: -74.810864)
 
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
+                it("contains a method called buildLocation that returns a CLLocation") {
+                    expect(Away.buildLocation(3, from: location)).to(beAnInstanceOf(CLLocation))
                 }
 
-                it("can read") {
-                    expect("🐮") == "🐮"
+                it("receives a from parameter"){
+                    expect(Away.buildLocation(3, from: location)).to(beAnInstanceOf(CLLocation))
                 }
 
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    dispatch_async(dispatch_get_main_queue()) {
-                        time = "done"
+                it("returns a CLLocation that is N meters away from base location"){
+                    for distance in [3.0, 9999.0, 100.0] {
+                        var resultLocation = Away.buildLocation(distance, from: location)
+                        expect(resultLocation.distanceFromLocation(location)) >= distance
                     }
+                }
 
-                    waitUntil { done in
-                        NSThread.sleepForTimeInterval(0.5)
-                        expect(time) == "done"
-
-                        done()
+                it("changes the latitude insignificantly if we dont pass the bearing degrees"){
+                    for distance in [3.0, 9999.0, 100.0] {
+                        var resultLocation = Away.buildLocation(distance, from: location)
+                        let difference = abs(resultLocation.coordinate.latitude - location.coordinate.latitude)
+                        expect(difference) < 0.0001
                     }
+                }
+
+                it("accepts an optional parameter for the bearing"){
+                    for bearing in 0...360{
+                        var resultLocation = Away.buildLocation(100, from: location, bearing: Double(bearing))
+                        var distanceDifference = resultLocation.distanceFromLocation(location) - 100
+                        expect(distanceDifference) < 0.2
+                    }
+                }
+            }
+
+            describe("buildTrip"){
+                it("contains a method called buildTrip that returns [CLLocation]") {
+                    expect(Away.buildTrip(3)).to(equal([]))
                 }
             }
         }
+    }
+}
+
+extension Int {
+    static func random() -> Int {
+        return Int(arc4random())
+    }
+
+    static func random(range: Range<Int>) -> Int {
+        return Int(arc4random_uniform(UInt32(range.endIndex - range.startIndex))) + range.startIndex
     }
 }

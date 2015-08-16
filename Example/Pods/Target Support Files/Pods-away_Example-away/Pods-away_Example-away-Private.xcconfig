@@ -1,9 +1,9 @@
-#include "Pods-away_Example-away.xcconfig"
+#include "Pods-away_Example-Away.xcconfig"
 CONFIGURATION_BUILD_DIR = $PODS_FRAMEWORK_BUILD_PATH
 FRAMEWORK_SEARCH_PATHS = "$PODS_FRAMEWORK_BUILD_PATH"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/away" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Nimble" "${PODS_ROOT}/Headers/Public/Quick" "${PODS_ROOT}/Headers/Public/away"
-OTHER_LDFLAGS = -ObjC
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/Away" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/Away" "${PODS_ROOT}/Headers/Public/Nimble" "${PODS_ROOT}/Headers/Public/Quick"
+OTHER_LDFLAGS = ${PODS_AWAY_EXAMPLE_AWAY_OTHER_LDFLAGS} -ObjC
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-away_Example
 PODS_ROOT = ${SRCROOT}
