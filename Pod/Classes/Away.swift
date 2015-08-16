@@ -40,7 +40,7 @@ public extension Double {
         return self * 1600
     }
 
-    var km: Double {
+    var Km: Double {
         return self * 1000
     }
 }

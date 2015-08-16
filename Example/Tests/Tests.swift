@@ -11,7 +11,7 @@ class TableOfContentsSpec: QuickSpec {
 
             describe("buildLocation"){
                 let location = CLLocation(latitude: 11.008914, longitude: -74.810864)
-                let distanceCases = [ 0.01, 1.0, 3.0, 9.0.km, 99.99.km, 0.1.km, 1.miles ]
+                let distanceCases = [ 0.01, 1.0, 3.0, 9.0.Km, 99.99.Km, 0.1.Km, 1.miles ]
 
                 it("contains a method called buildLocation that returns a CLLocation") {
                     expect(Away.buildLocation(3, from: location)).to(beAnInstanceOf(CLLocation))

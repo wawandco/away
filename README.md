@@ -21,9 +21,9 @@ Build location propose is to generate a single location that is some distance aw
 It also receives a `bearing` parameter that indicates the degree Away uses for the new location.
 
 ```Swift
-  Away.buildLocation(3.miles(), from: baseLocation)
-  Away.buildLocation(3.kilometers(), from: baseLocation)
-  Away.buildLocation(3.kilometers(), from: baseLocation, bearing: 10)
+  Away.buildLocation(3.miles, from: baseLocation)
+  Away.buildLocation(3.Km, from: baseLocation)
+  Away.buildLocation(3.Km, from: baseLocation, bearing: 10)
 ```
 
 This method returns an instance of CLLocation with a possible deviation minor than 0.2 meters.
@@ -33,8 +33,8 @@ This method returns an instance of CLLocation with a possible deviation minor th
 Build Trip builds a sequence of locations that end some distance away from the
 
 ```Swift
-  Away.buildTrip(3.miles(), locations: 3, from: baseLocation)
-  Away.buildTrip(3.kilometers(), locations: 2, from: baseLocation)
+  Away.buildTrip(3.miles, locations: 3, from: baseLocation)
+  Away.buildTrip(3.Km, locations: 2, from: baseLocation)
 ```
 
 It returns an array of CLLocations
