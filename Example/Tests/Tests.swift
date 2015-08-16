@@ -21,14 +21,14 @@ class TableOfContentsSpec: QuickSpec {
                 }
 
                 it("returns a CLLocation that is N meters away from base location"){
-                    for distance in [3.0, 9999.0, 100.0] {
+                    for distance in [0.01, 1.0, 3.0, 9999.0, 100.0] {
                         var resultLocation = Away.buildLocation(distance, from: location)
                         expect(resultLocation.distanceFromLocation(location)) >= distance
                     }
                 }
 
                 it("changes the latitude insignificantly if we dont pass the bearing degrees"){
-                    for distance in [3.0, 9999.0, 100.0] {
+                    for distance in [0.01, 1.0, 3.0, 9999.0, 100.0] {
                         var resultLocation = Away.buildLocation(distance, from: location)
                         let difference = abs(resultLocation.coordinate.latitude - location.coordinate.latitude)
                         expect(difference) < 0.0001
