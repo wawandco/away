@@ -11,8 +11,8 @@ public class Away {
         let baseLatitude = from.coordinate.latitude.toRadians
         let baseLongitude = from.coordinate.longitude.toRadians
 
-        var resultLatitude = asin(sin(baseLatitude) * cos(distanceInKm) + cos(baseLatitude) * sin(distanceInKm) * cos(bearingRad))
-        var resultLongitude = baseLongitude + atan2( sin(bearingRad) * sin(distanceInKm) * cos(baseLatitude),cos(distanceInKm) - sin(baseLatitude) * sin(resultLatitude));
+        var resultLatitude = determineNewLatitude(baseLatitude, distanceInKm, bearingRad)
+        var resultLongitude = determineNewLongitude(baseLatitude, baseLongitude, resultLatitude, bearingRad, distanceInKm)
         resultLatitude = resultLatitude.toDegrees
         resultLongitude = resultLongitude.toDegrees
 
@@ -20,10 +20,17 @@ public class Away {
         return newLocation
     }
 
-
     public class func buildTrip(distanceInMeters: NSNumber)-> [CLLocation]{
         let result : [CLLocation] = []
         return result
+    }
+
+    class func determineNewLatitude( baseLatitude : Double,_ distanceInKm : Double,_ bearingRad: Double) -> Double {
+        return asin(sin(baseLatitude) * cos(distanceInKm) + cos(baseLatitude) * sin(distanceInKm) * cos(bearingRad))
+    }
+
+    class func determineNewLongitude( baseLatitude: Double,_ baseLongitude : Double, _ resultLatitude: Double, _ bearingRad: Double,_ distanceInKm: Double )-> Double {
+        return baseLongitude + atan2( sin(bearingRad) * sin(distanceInKm) * cos(baseLatitude),cos(distanceInKm) - sin(baseLatitude) * sin(resultLatitude));
     }
 }
 
