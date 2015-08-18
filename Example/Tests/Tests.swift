@@ -73,6 +73,10 @@ class TableOfContentsSpec: QuickSpec {
 
                     expect(difference) < 5
                 }
+
+                it("throws an exeption if you call the method and require only one location"){
+                    expect(Away.buildTrip(3.Km, from: location, locations: 1)).to(raiseException())
+                }
             }
         }
     }

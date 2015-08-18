@@ -21,6 +21,10 @@ public class Away {
     }
 
     public class func buildTrip(distanceInMeters: Double, from: CLLocation, locations: Int=3)-> [CLLocation]{
+        if locations < 2 {
+            NSException(name:"InvalidArgument", reason:"Locations number should be greater than 1.", userInfo:nil).raise()
+        }
+
         var result : [CLLocation] = [from]
         let distanceBetweenLocations = distanceInMeters / Double(locations-1)
 
