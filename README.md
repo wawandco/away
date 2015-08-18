@@ -33,12 +33,14 @@ This method returns an instance of CLLocation with a possible deviation minor th
 Build Trip builds a sequence of locations that end some distance away from the
 
 ```Swift
-  Away.buildTrip(3.miles, locations: 3, from: baseLocation)
-  Away.buildTrip(3.Km, locations: 2, from: baseLocation)
+  Away.buildTrip(3.miles, from: baseLocation, locations: 3 )
+  Away.buildTrip(3.Km, from: baseLocation, locations: 2)
 ```
 
-It returns an array of CLLocations
+It returns an array of CLLocations, starting at the base location and splits the passed distance between the number of locations you selected as the distance betweeen the locations in the result array.
 
+[TODO]
+Consider the bearing in the trip generation mechanism
 
 ## Requirements
 
