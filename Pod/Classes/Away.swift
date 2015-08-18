@@ -20,8 +20,14 @@ public class Away {
         return newLocation
     }
 
-    public class func buildTrip(distanceInMeters: NSNumber)-> [CLLocation]{
-        let result : [CLLocation] = []
+    public class func buildTrip(distanceInMeters: Double, from: CLLocation, locations: Int=3)-> [CLLocation]{
+        var result : [CLLocation] = [from]
+        let distanceBetweenLocations = distanceInMeters / Double(locations-1)
+
+        for index in (1...locations-1) {
+            let location = buildLocation(distanceBetweenLocations, from: result.last!)
+            result.append(location)
+        }
         return result
     }
 
