@@ -50,7 +50,7 @@ Consider the bearing in the trip generation mechanism
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "away"
+pod "Away"
 ```
 
 ## Author

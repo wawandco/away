@@ -4,6 +4,8 @@
 
 language: objective-c
 cache: cocoapods
+xcode_project: Example/away.xcodeproj # path to your xcodeproj folder
+xcode_scheme: away-Example
 podfile: Example/Podfile
 before_install:
   - gem install cocoapods # Since Travis is not always on latest version
