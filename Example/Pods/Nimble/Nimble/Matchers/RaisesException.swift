@@ -26,8 +26,8 @@ public func raiseException(
                 return
             }
 
-            setFailureMessageForException(failureMessage, exception, named, reason, userInfo, closure)
-            return exceptionMatchesNonNilFieldsOrClosure(exception, named, reason, userInfo, closure)
+            setFailureMessageForException(failureMessage, exception: exception, named: named, reason: reason, userInfo: userInfo, closure: closure)
+            return exceptionMatchesNonNilFieldsOrClosure(exception, named: named, reason: reason, userInfo: userInfo, closure: closure)
         }
 }
 
@@ -87,7 +87,7 @@ internal func exceptionMatchesNonNilFieldsOrClosure(
                 let assertions = gatherFailingExpectations {
                     closure(exception)
                 }
-                let messages = map(assertions) { $0.message }
+                let messages = assertions.map { $0.message }
                 if messages.count > 0 {
                     matches = false
                 }
@@ -97,7 +97,7 @@ internal func exceptionMatchesNonNilFieldsOrClosure(
         return matches
 }
 
-@objc public class NMBObjCRaiseExceptionMatcher : NMBMatcher {
+public class NMBObjCRaiseExceptionMatcher : NMBMatcher {
     internal var _name: String?
     internal var _reason: String?
     internal var _userInfo: NSDictionary?
@@ -115,7 +115,7 @@ internal func exceptionMatchesNonNilFieldsOrClosure(
         let expr = Expression(expression: block, location: location)
 
         return raiseException(
-            named: _name,
+            _name,
             reason: _reason,
             userInfo: _userInfo,
             closure: _block

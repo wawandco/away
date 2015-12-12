@@ -3,7 +3,7 @@
     the `describe` and `context` functions. Example groups can share
     setup and teardown code.
 */
-@objc final public class ExampleGroup {
+final public class ExampleGroup {
     weak internal var parent: ExampleGroup?
     internal let hooks = ExampleHooks()
 
@@ -26,7 +26,7 @@
     public var examples: [Example] {
         var examples = childExamples
         for group in childGroups {
-            examples.extend(group.examples)
+            examples.appendContentsOf(group.examples)
         }
         return examples
     }
@@ -53,17 +53,17 @@
     }
 
     internal var befores: [BeforeExampleWithMetadataClosure] {
-        var closures = hooks.befores.reverse()
+        var closures = Array(hooks.befores.reverse())
         walkUp() { (group: ExampleGroup) -> () in
-            closures.extend(group.hooks.befores.reverse())
+            closures.appendContentsOf(Array(group.hooks.befores.reverse()))
         }
-        return closures.reverse()
+        return Array(closures.reverse())
     }
 
     internal var afters: [AfterExampleWithMetadataClosure] {
         var closures = hooks.afters
         walkUp() { (group: ExampleGroup) -> () in
-            closures.extend(group.hooks.afters)
+            closures.appendContentsOf(group.hooks.afters)
         }
         return closures
     }

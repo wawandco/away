@@ -11,7 +11,7 @@ public func endWith<S: SequenceType, T: Equatable where S.Generator.Element == T
             var actualGenerator = actualValue.generate()
             var lastItem: T?
             var item: T?
-            do {
+            repeat {
                 lastItem = item
                 item = actualGenerator.next()
             } while(item != nil)

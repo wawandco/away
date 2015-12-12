@@ -6,7 +6,7 @@ public class Away {
     public class func buildLocation(distanceInMeters: Double, from: CLLocation, bearing: Double=90)-> CLLocation{
         var distanceInKm = (distanceInMeters / 1000.0)
         distanceInKm = distanceInKm / 6371.0
-        var bearingRad = bearing.toRadians // Degrees to move to
+        let bearingRad = bearing.toRadians // Degrees to move to
 
         let baseLatitude = from.coordinate.latitude.toRadians
         let baseLongitude = from.coordinate.longitude.toRadians
@@ -28,7 +28,7 @@ public class Away {
         var result : [CLLocation] = [from]
         let distanceBetweenLocations = distanceInMeters / Double(locations-1)
 
-        for index in (1...locations-1) {
+        for _ in (1...locations-1) {
             let location = buildLocation(distanceBetweenLocations, from: result.last!)
             result.append(location)
         }

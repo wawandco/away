@@ -2,7 +2,7 @@ import Foundation
 
 public func allPass<T,U where U: SequenceType, U.Generator.Element == T>
     (passFunc: (T?) -> Bool) -> NonNilMatcherFunc<U> {
-        return allPass("pass a condition", passFunc)
+        return allPass("pass a condition", passFunc: passFunc)
 }
 
 public func allPass<T,U where U: SequenceType, U.Generator.Element == T>
